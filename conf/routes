@@ -1,0 +1,47 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                               ck.university.diploma.csm.controllers.Application.index
+GET     /restricted                     ck.university.diploma.csm.controllers.Application.restricted
+GET     /assets/javascript/routes.js    ck.university.diploma.csm.controllers.Application.jsRoutes
+
+GET     /profile                        ck.university.diploma.csm.controllers.Application.profile
+
+GET     /login                          ck.university.diploma.csm.controllers.Application.login
+POST    /login                          ck.university.diploma.csm.controllers.Application.doLogin
+
+GET     /logout                         com.feth.play.module.pa.controllers.Authenticate.logout
+GET     /authenticate/:provider         com.feth.play.module.pa.controllers.Authenticate.authenticate(provider: String)
+
+GET     /signup                         ck.university.diploma.csm.controllers.Application.signup
+POST    /signup                         ck.university.diploma.csm.controllers.Application.doSignup
+
+GET     /accounts/unverified            ck.university.diploma.csm.controllers.Signup.unverified
+GET     /authenticate/:provider/denied  ck.university.diploma.csm.controllers.Signup.oAuthDenied(provider: String)
+
+GET     /accounts/verify/:token         ck.university.diploma.csm.controllers.Signup.verify(token: String)
+GET     /accounts/exists                ck.university.diploma.csm.controllers.Signup.exists
+
+GET     /accounts/password/reset/:token ck.university.diploma.csm.controllers.Signup.resetPassword(token: String)
+POST    /accounts/password/reset        ck.university.diploma.csm.controllers.Signup.doResetPassword
+
+GET     /accounts/password/change       ck.university.diploma.csm.controllers.Account.changePassword
+POST    /accounts/password/change       ck.university.diploma.csm.controllers.Account.doChangePassword
+
+GET     /accounts/verify                ck.university.diploma.csm.controllers.Account.verifyEmail
+
+GET     /accounts/add                   ck.university.diploma.csm.controllers.Account.link
+
+GET     /accounts/link                  ck.university.diploma.csm.controllers.Account.askLink
+POST    /accounts/link                  ck.university.diploma.csm.controllers.Account.doLink
+
+GET     /accounts/merge                 ck.university.diploma.csm.controllers.Account.askMerge
+POST    /accounts/merge                 ck.university.diploma.csm.controllers.Account.doMerge
+
+GET     /login/password/forgot          ck.university.diploma.csm.controllers.Signup.forgotPassword(email: String ?= "")
+POST    /login/password/forgot          ck.university.diploma.csm.controllers.Signup.doForgotPassword
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file                   controllers.Assets.at(path="/public", file)
