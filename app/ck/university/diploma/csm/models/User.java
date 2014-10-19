@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -41,9 +42,13 @@ public class User extends Identifier implements Subject {
 	@Constraints.Email
 	// if you make this unique, keep in mind that users *must* merge/link their
 	// accounts then on signup with additional providers
-	// @Column(unique = true)
+	@Column( length = 45 )
 	private String														email;
 	
+	/**
+	 * Nick name of User
+	 */
+	@Column( length = 20 )
 	private String														name;
 	
 	@Formats.DateTime( pattern = "yyyy-MM-dd HH:mm:ss" )
