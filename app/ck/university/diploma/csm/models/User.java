@@ -26,7 +26,6 @@ import com.feth.play.module.pa.providers.password.UsernamePasswordAuthUser;
 import com.feth.play.module.pa.user.AuthUser;
 import com.feth.play.module.pa.user.AuthUserIdentity;
 import com.feth.play.module.pa.user.EmailIdentity;
-import com.feth.play.module.pa.user.FirstLastNameIdentity;
 import com.feth.play.module.pa.user.NameIdentity;
 
 /**
@@ -43,29 +42,25 @@ public class User extends Identifier implements Subject {
 	// if you make this unique, keep in mind that users *must* merge/link their
 	// accounts then on signup with additional providers
 	// @Column(unique = true)
-	public String															email;
+	private String														email;
 	
-	public String															name;
-	
-	public String															firstName;
-	
-	public String															lastName;
+	private String														name;
 	
 	@Formats.DateTime( pattern = "yyyy-MM-dd HH:mm:ss" )
-	public Date																lastLogin;
+	private Date															lastLogin;
 	
-	public boolean														active;
+	private boolean														active;
 	
-	public boolean														emailValidated;
+	private boolean														emailValidated;
 	
 	@ManyToMany
-	public List< SecurityRole >								roles							= new ArrayList< SecurityRole >( 0 );
+	private List< SecurityRole >							roles							= new ArrayList< SecurityRole >( 0 );
 	
 	@OneToMany( cascade = CascadeType.ALL )
-	public List< LinkedAccount >							linkedAccounts		= new ArrayList< LinkedAccount >( 0 );
+	private List< LinkedAccount >							linkedAccounts		= new ArrayList< LinkedAccount >( 0 );
 	
 	@ManyToMany
-	public List< UserPermission >							permissions				= new ArrayList< UserPermission >( 0 );
+	private List< UserPermission >						permissions				= new ArrayList< UserPermission >( 0 );
 	
 	public static final Finder< Long, User >	find							= new Finder< Long, User >( Long.class, User.class );
 	
@@ -79,9 +74,45 @@ public class User extends Identifier implements Subject {
 		return roles;
 	}
 	
+	public List< LinkedAccount > getLinkedAccounts() {
+		return linkedAccounts;
+	}
+	
 	@Override
 	public List< ? extends Permission > getPermissions() {
 		return permissions;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail( final String email ) {
+		this.email = email;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName( final String name ) {
+		this.name = name;
+	}
+	
+	public Date getLastLogin() {
+		return lastLogin;
+	}
+	
+	public void setLastLogin( final Date lastLogin ) {
+		this.lastLogin = lastLogin;
+	}
+	
+	public boolean isActive() {
+		return active;
+	}
+	
+	public boolean isEmailValidated() {
+		return emailValidated;
 	}
 	
 	public static boolean existsByAuthUserIdentity( final AuthUserIdentity identity ) {
@@ -151,17 +182,19 @@ public class User extends Identifier implements Subject {
 				user.name = name;
 			}
 		}
-		if ( authUser instanceof FirstLastNameIdentity ) {
-			final FirstLastNameIdentity identity = ( FirstLastNameIdentity )authUser;
-			final String firstName = identity.getFirstName();
-			final String lastName = identity.getLastName();
-			if ( firstName != null ) {
-				user.firstName = firstName;
-			}
-			if ( lastName != null ) {
-				user.lastName = lastName;
-			}
-		}
+		/**
+		 * if ( authUser instanceof FirstLastNameIdentity ) {
+		 * final FirstLastNameIdentity identity = ( FirstLastNameIdentity )authUser;
+		 * final String firstName = identity.getFirstName();
+		 * final String lastName = identity.getLastName();
+		 * if ( firstName != null ) {
+		 * user.firstName = firstName;
+		 * }
+		 * if ( lastName != null ) {
+		 * user.lastName = lastName;
+		 * }
+		 * }
+		 */
 		user.save();
 		user.saveManyToManyAssociations( "roles" );
 		// user.saveManyToManyAssociations("permissions");

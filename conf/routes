@@ -5,6 +5,11 @@
 # Home page
 GET     /                               ck.university.diploma.csm.controllers.Application.index
 GET     /restricted                     ck.university.diploma.csm.controllers.Application.restricted
+GET     /about                      		ck.university.diploma.csm.controllers.Application.about
+GET     /feedback                      	ck.university.diploma.csm.controllers.Application.feedback
+GET     /guide                      		ck.university.diploma.csm.controllers.Application.guide
+GET     /officialHome                		ck.university.diploma.csm.controllers.Application.officialHome
+GET     /rates                 				  ck.university.diploma.csm.controllers.Application.rates
 GET     /assets/javascript/routes.js    ck.university.diploma.csm.controllers.Application.jsRoutes
 
 GET     /profile                        ck.university.diploma.csm.controllers.Application.profile

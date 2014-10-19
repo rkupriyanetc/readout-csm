@@ -18,11 +18,11 @@ import play.i18n.Lang;
 import play.i18n.Messages;
 import play.mvc.Call;
 import play.mvc.Http.Context;
-import ck.university.diploma.csm.controllers.*;
+import ck.university.diploma.csm.controllers.routes;
 import ck.university.diploma.csm.models.LinkedAccount;
 import ck.university.diploma.csm.models.TokenAction;
-import ck.university.diploma.csm.models.User;
 import ck.university.diploma.csm.models.TokenAction.TokenType;
+import ck.university.diploma.csm.models.User;
 
 import com.feth.play.module.mail.Mailer.Mail.Body;
 import com.feth.play.module.pa.PlayAuthenticate;
@@ -64,20 +64,19 @@ public class MyUsernamePasswordAuthProvider
 		
 		@Required
 		@Email
-		public String	email;
+		private String	email;
+		
+		public String getEmail() {
+			return email;
+		}
 	}
 	
 	public static class MyLogin extends MyIdentity implements
 			com.feth.play.module.pa.providers.password.UsernamePasswordAuthProvider.UsernamePassword {
 		
 		@Required
-		@MinLength( 5 )
-		public String	password;
-		
-		@Override
-		public String getEmail() {
-			return email;
-		}
+		@MinLength( 3 )
+		private String	password;
 		
 		@Override
 		public String getPassword() {
@@ -88,14 +87,22 @@ public class MyUsernamePasswordAuthProvider
 	public static class MySignup extends MyLogin {
 		
 		@Required
-		@MinLength( 5 )
-		public String	repeatPassword;
+		@MinLength( 3 )
+		private String	repeatPassword;
 		
 		@Required
-		public String	name;
+		private String	name;
+		
+		public String getName() {
+			return name;
+		}
+		
+		public String getRepeatPassword() {
+			return repeatPassword;
+		}
 		
 		public String validate() {
-			if ( password == null || !password.equals( repeatPassword ) ) {
+			if ( getPassword() == null || !getPassword().equals( repeatPassword ) ) {
 				return Messages.get( "playauthenticate.password.signup.error.passwords_not_same" );
 			}
 			return null;
@@ -125,7 +132,7 @@ public class MyUsernamePasswordAuthProvider
 			final MyUsernamePasswordAuthUser user ) {
 		final User u = User.findByUsernamePasswordIdentity( user );
 		if ( u != null ) {
-			if ( u.emailValidated ) {
+			if ( u.isEmailValidated() ) {
 				// This user exists, has its email validated and is active
 				return SignupResult.USER_EXISTS;
 			} else {
@@ -151,10 +158,10 @@ public class MyUsernamePasswordAuthProvider
 		if ( u == null ) {
 			return LoginResult.NOT_FOUND;
 		} else {
-			if ( !u.emailValidated ) {
+			if ( !u.isEmailValidated() ) {
 				return LoginResult.USER_UNVERIFIED;
 			} else {
-				for ( final LinkedAccount acc : u.linkedAccounts ) {
+				for ( final LinkedAccount acc : u.getLinkedAccounts() ) {
 					if ( getKey().equals( acc.getProviderKey() ) ) {
 						if ( authUser.checkPassword( acc.getProviderUserId(), authUser.getPassword() ) ) {
 							// Password was correct
@@ -254,8 +261,10 @@ public class MyUsernamePasswordAuthProvider
 		final String url = routes.Signup.resetPassword( token ).absoluteURL( ctx.request(), isSecure );
 		final Lang lang = Lang.preferred( ctx.request().acceptLanguages() );
 		final String langCode = lang.code();
-		final String html = getEmailTemplate( "views.html.account.email.password_reset", langCode, url, token, user.name, user.email );
-		final String text = getEmailTemplate( "views.txt.account.email.password_reset", langCode, url, token, user.name, user.email );
+		final String html = getEmailTemplate( "views.html.account.email.password_reset", langCode, url, token, user.getName(),
+				user.getEmail() );
+		final String text = getEmailTemplate( "views.txt.account.email.password_reset", langCode, url, token, user.getName(),
+				user.getEmail() );
 		return new Body( text, html );
 	}
 	
@@ -317,8 +326,10 @@ public class MyUsernamePasswordAuthProvider
 		final String url = routes.Signup.verify( token ).absoluteURL( ctx.request(), isSecure );
 		final Lang lang = Lang.preferred( ctx.request().acceptLanguages() );
 		final String langCode = lang.code();
-		final String html = getEmailTemplate( "views.html.account.email.verify_email", langCode, url, token, user.name, user.email );
-		final String text = getEmailTemplate( "views.txt.account.email.verify_email", langCode, url, token, user.name, user.email );
+		final String html = getEmailTemplate( "views.html.account.email.verify_email", langCode, url, token, user.getName(),
+				user.getEmail() );
+		final String text = getEmailTemplate( "views.txt.account.email.verify_email", langCode, url, token, user.getName(),
+				user.getEmail() );
 		return new Body( text, html );
 	}
 	
@@ -330,6 +341,6 @@ public class MyUsernamePasswordAuthProvider
 	}
 	
 	private String getEmailName( final User user ) {
-		return getEmailName( user.email, user.name );
+		return getEmailName( user.getEmail(), user.getName() );
 	}
 }

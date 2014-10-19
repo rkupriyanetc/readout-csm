@@ -3,12 +3,25 @@
 
 # --- !Ups
 
+create table consumers (
+  id                        bigint auto_increment not null,
+  first_name                varchar(255),
+  name                      varchar(255),
+  last_name                 varchar(255),
+  constraint pk_consumers primary key (id))
+;
+
 create table linkeds (
   id                        bigint auto_increment not null,
   user_id                   bigint,
   provider_user_id          varchar(255),
   provider_key              varchar(255),
   constraint pk_linkeds primary key (id))
+;
+
+create table profiles (
+  id                        bigint auto_increment not null,
+  constraint pk_profiles primary key (id))
 ;
 
 create table roles (
@@ -33,8 +46,6 @@ create table users (
   id                        bigint auto_increment not null,
   email                     varchar(255),
   name                      varchar(255),
-  first_name                varchar(255),
-  last_name                 varchar(255),
   last_login                datetime,
   active                    tinyint(1) default 0,
   email_validated           tinyint(1) default 0,
@@ -78,7 +89,11 @@ alter table users_permissions add constraint fk_users_permissions_permissions_02
 
 SET FOREIGN_KEY_CHECKS=0;
 
+drop table consumers;
+
 drop table linkeds;
+
+drop table profiles;
 
 drop table roles;
 

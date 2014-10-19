@@ -1,3 +1,39 @@
+page.home.title=Consumer Service Manager
+page.home.title.abbr=CSM
+page.home.home=Home
+page.home.about=About
+page.home.feedback=Feedback
+page.home.created=March 2014 year
+page.home.version=1.0-SNAPSHOT
+page.home.site=This is not the official site
+page.home.signup=Sign Up
+page.home.login=Login
+page.home.logout=Logout
+page.home.profile=Profile
+page.home.bind=Link
+page.home.rates=Rates
+
+page.registered.title=Only registered consumers
+
+page.leadership.title=Guide REN
+
+page.telephone_directory.title=Telephone directory
+page.telephone_directory.codes=Dialing code
+
+text.about.play=Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+text.about.bootstrap=Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+text.about.play_authenticate=Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+
+text.feedback.contact=Write to establish a link
+
+carousel.title.0=Register on the website Consumer Service Manager
+carousel.title.1=Readout to Consumer Service Manager service.
+carousel.title.2=Calculate and print our account.
+
+carousel.button.0=Register
+carousel.button.1=Readout
+carousel.button.2=Print
+
 # Override default Play's validation messages
 
 # --- Constraints
@@ -126,7 +162,9 @@ playauthenticate.handler.loginfirst=You need to log in first, to view ''{0}''
 
 # play-authenticate: Profile
 playauthenticate.profile.title=User profile
-playauthenticate.profile.mail=Your name is {0} and your email address is {1}!
+playauthenticate.profile.nick=Your nick is {0}
+playauthenticate.profile.mail=Your email address is {0}
+playauthenticate.profile.name=Your name is {0}
 playauthenticate.profile.unverified=unverified - click to verify
 playauthenticate.profile.verified=verified
 playauthenticate.profile.providers_many=There are {0} providers linked with your account:

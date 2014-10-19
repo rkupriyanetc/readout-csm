@@ -1,51 +1,60 @@
 @(localUser: ck.university.diploma.csm.models.User = null)
 
 @import com.feth.play.module.pa.views.html._
+@import ck.university.diploma.csm.controllers._
 
 @main(Messages("playauthenticate.profile.title"),"profile") {
-
-    <h1>@Messages("playauthenticate.profile.title")</h1>
-    <p>
-    Your name is @localUser.name and your email address is @if(!localUser.email) {<em>&lt;unknown&gt;</em>.} else {
-    	@localUser.email.
-	    <i>
-	    @if(!localUser.emailValidated && localUser.email) {
-	      (<a href="@ck.university.diploma.csm.controllers.routes.Account.verifyEmail">unverified - click to verify</a>)
-	    } else {
-	      (verified)
-	    }</i>
-    }
-    <br />
-        @if(localUser.firstName && localUser.lastName) {
-            Your first name is @localUser.firstName and your last name is @localUser.lastName
-            <br/>
+	
+	<div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">@Messages("playauthenticate.profile.title")</h3>
+    </div>
+    <div class="panel-body">
+    
+    	<p>
+    		@Messages("playauthenticate.profile.mail", localUser.getEmail())
+    		<i>
+	    		@if(!localUser.isEmailValidated() && localUser.getEmail()) {
+	    			(<a href="@routes.Account.verifyEmail">@Messages("playauthenticate.profile.unverified")</a>)
+	    		} else {
+	    			(@Messages("playauthenticate.profile.verified"))
+	    		}
+	    	</i>
+	    </p>
+	    
+	    <p>
+        @if(localUser.getName()) {
+        	@Messages("playauthenticate.profile.nick", localUser.getName())<br/>
         }
-    @defining(localUser.getProviders()) { providers =>
-        @if(providers.size() > 0) {
-        @if(providers.size() ==1) {
-            @Messages("playauthenticate.profile.providers_one")
-        } else {
-            @Messages("playauthenticate.profile.providers_many",providers.size().toString())
+        @defining(localUser.getProviders()) { providers =>
+        	@if(providers.size() > 0) {
+        		@if(providers.size() ==1) {
+        			@Messages("playauthenticate.profile.providers_one")
+        		} else {
+        			@Messages("playauthenticate.profile.providers_many", providers.size().toString())
+        		}
+        		@for(p <- providers) {
+        			@_providerIcon(p)
+        		}<br/>
+        	}
         }
-        @for(p <- providers) {
-            @_providerIcon(p)
+      </p>
+       
+      <p>
+      	@currentAuth() { auth =>
+        	@Messages("playauthenticate.profile.logged") @_providerIcon(auth.getProvider())<br/>
+        	@if(auth.expires() != -1){
+        		@Messages("playauthenticate.profile.session", auth.getId(), Application.formatTimestamp(auth.expires()))
+        	} else {
+        		@Messages("playauthenticate.profile.session_endless", auth.getId())
+        	}
         }
-        <br/>
-        }
-    }
-
-    <br/>
-    @currentAuth() { auth =>
-        @Messages("playauthenticate.profile.logged") @_providerIcon(auth.getProvider())<br/>
-        @if(auth.expires() != -1){
-            @Messages("playauthenticate.profile.session", auth.getId(), ck.university.diploma.csm.controllers.Application.formatTimestamp(auth.expires()))
-        } else {
-            @Messages("playauthenticate.profile.session_endless", auth.getId())
-        }
-    }
-    <br/>
-    <ul>
-    	<li><a href="@ck.university.diploma.csm.controllers.routes.Account.changePassword">@Messages("playauthenticate.profile.password_change")</a></li>
-    </ul>
-    </p>
+      </p>
+        
+      <ul>
+      	<li><a href="@routes.Account.changePassword">@Messages("playauthenticate.profile.password_change")</a></li>
+      </ul>
+      
+    </div>
+  </div>
 }

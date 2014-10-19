@@ -1,0 +1,89 @@
+page.home.name=Маньківський РЕМ
+page.home.nameRegion=ПАТ "Черкасиобленерго"
+page.home.home=Домашня
+page.home.about=Про сайт
+page.home.feedback=Зворотній зв''язок
+page.home.created=Березень 2014 року
+page.home.site=Це не є офіційний сайт
+page.home.signup=Зареєструватися
+page.home.login=Увійти
+page.home.logout=Вийти
+page.home.profile=Профіль
+page.home.bind=Зв''язати
+page.home.rates=Тарифи
+page.home.copyright=Олександр Багачук
+
+page.home.description_1=На нашому сайті ви можете переглянути останні події та використати довідку.
+page.home.description_2=Фізичні споживачі ( населення ) можуть отримати додаткову послугу на нашому сайті - це передача показників лічильника в РЕМ. Але для цього вам потрібно зареєструватись. Під час реєстрації вам потрібно буде вказати ваш правильний особовий рахунок, який є вашим ідентифікатором при сплаті за електроенергію, точно таке ж прізвище, ім''я та по батькові, як в квитанції та таку ж адресу. Підтвердження реєстрації відбувається через електронну почту.
+page.home.description_3=В жодному іншому випадку ви не зареєструєтесь!
+
+page.registered.title=Лише для зареєстрованих споживачів
+page.signup.title=Лише для споживачів населення Маньківського району
+
+page.official.title=Офіційний сайт
+page.official.link=Зв''язок з офіційним сайтом
+
+page.leadership.title=Керівництво РЕМ
+page.leadership.manager.title=Директор Маньківського РЕМ
+page.leadership.manager.name=Галай Микола Андрійович
+page.leadership.secretar.title=Секретар
+page.leadership.secretar.name=Євтушенко Олена Василівна
+page.leadership.submanager.title=Головний інженер РЕМ
+page.leadership.submanager.name=Фуркало Сергій Володимирович
+page.leadership.accounting.title=Головний бухгалтер
+page.leadership.accounting.name=Слюсаренко Любов Петрівна
+page.leadership.energosubmanager.title=Замісник директора з енергозбуту та комерційних питань
+page.leadership.energosubmanager.name=Самборський Юрій Федорович
+page.leadership.leadengineer.title=Провідний інженер ВТГ
+page.leadership.leadengineer.name=Почапський Володимир Миколайович
+page.leadership.headcustomerservice.title=Начальник абонентської дільниці
+page.leadership.headcustomerservice.name=Филька Тетяна Ілларіонівна
+page.leadership.jurisconsult.title=Юрисконсульт
+page.leadership.jurisconsult.name=Худолій Василь Володимирович
+page.leadership.chiefdispatcher.title=Начальник ОДС
+page.leadership.chiefdispatcher.name=Борона Петро Олексійович
+page.leadership.safetyengineer.title=Інженер з охорони праці
+page.leadership.safetyengineer.name=Бицюк Володимир Петрович
+page.leadership.bookkeeper.title=Бухгалтер
+page.leadership.bookkeeper.name=Максименюк Людмила Миколаївна
+page.leadership.bookkeeperenergo.title=Бухгалтер енергозбуту
+page.leadership.bookkeeperenergo.name=Перевеза Надія Казимирівна
+page.leadership.inspector.title=Інспектор
+page.leadership.inspector.name=Нечеснюк Віталій Віталійович, Фуркало Сергій Сергійович
+page.leadership.programmer.title=Інженер з комп''ютерних систем
+page.leadership.programmer.name=Купріянець Руслан Васильович
+page.leadership.operator.title=Оператори
+page.leadership.operator.name=Роєнко Юрій Володимирович, Мартинов Сргій Григорович
+
+page.telephone_directory.title=Телефонний довідник
+page.telephone_directory.codes=Міжміський код
+
+page.rates.info=інформує про зміну тарифів на електроенергію, що відпускається населенню з 01 липня 2012 року.
+page.rates.resolution=Згідно постанови НКРЕ України від 15.06.2012 року № 750, зареєстрованої в Міністерстві юстиції України 19.06.2012 року за № 996/21308, внесені зміни до постанови НКРЕ України від 23.04.2012 року №497 щодо тарифів на електроенергію, що відпускається населенню. З 01 липня 2012 року тарифи становлять:
+page.rates.title_category=Категорії споживачів
+page.rates.title_rate=Тарифи на електроенергію
+page.rates.title_rate_desc=( грн. за 1 кВт*Год )
+page.rates.title_rate_tax=З ПДВ
+page.rates.title_rate_without_tax=Без ПДВ
+page.rates.title_place_village=В селі
+page.rates.title_place_city=В місті
+
+text.feedback.contact=Пишіть, щоб встановити зв''язок
+
+text.about.rvk=Купріянець Руслан Васильович. Інженер з комп''ютерних систем Маньківського РЕМ
+text.about.bop=Це мій перший сайт - сайт дипломної роботи. Далі буде простіше. Дякую всім за підтримку!
+
+text.official.home=Офіційна підтримка знаходиться в
+text.official.leadership=Керівники апарату управління
+text.official.ikts.home=Інформаційно-консультаційниц центр
+text.official.rens=Всі РЕМи
+text.official.history=Історія розвитку
+text.official.customers=споживачам
+
+carousel.title.0=Зареєструйся на сайті
+carousel.title.1=Передай показники до служби підтримки
+carousel.title.2=Розрахуй та роздрукуй рахунок
+
+carousel.button.0=Реєстрація
+carousel.button.1=Показники
+carousel.button.2=Друк

@@ -1,11 +1,11 @@
 package ck.university.diploma.csm;
 
-import ck.university.diploma.csm.controllers.routes;
 import java.util.Arrays;
 
 import play.Application;
 import play.GlobalSettings;
 import play.mvc.Call;
+import ck.university.diploma.csm.controllers.routes;
 import ck.university.diploma.csm.models.SecurityRole;
 
 import com.feth.play.module.pa.PlayAuthenticate;
