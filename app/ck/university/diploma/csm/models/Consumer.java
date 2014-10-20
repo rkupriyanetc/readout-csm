@@ -1,5 +1,6 @@
 package ck.university.diploma.csm.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -7,35 +8,26 @@ import javax.persistence.Table;
 @Table( name = "consumers" )
 public class Consumer extends Identifier {
 	
-	private static final long	serialVersionUID	= 1L;
+	private static final long											serialVersionUID	= 1L;
 	
-	private String						firstName;
+	@Column( length = 60 )
+	private String																firstLastName;
 	
-	private String						name;
+	private User																	userId;
 	
-	private String						lastName;
+	public static final Finder< Long, Consumer >	find							= new Finder< Long, Consumer >( Long.class, Consumer.class );
 	
-	public String getFirstName() {
-		return firstName;
+	public String getFirstLastName() {
+		return firstLastName;
 	}
 	
-	public void setFirstName( final String firstName ) {
-		this.firstName = firstName;
+	public void setFirstLastName( final String firstLastName ) {
+		this.firstLastName = firstLastName;
 	}
 	
-	public String getName() {
-		return name;
-	}
+	public Consumer() {}
 	
-	public void setName( final String name ) {
-		this.name = name;
-	}
-	
-	public String getLastName() {
-		return lastName;
-	}
-	
-	public void setLastName( final String lastName ) {
-		this.lastName = lastName;
+	public static Consumer findById( final long id ) {
+		return find.where().eq( "id", id ).findUnique();
 	}
 }
