@@ -7,13 +7,13 @@ public class Bank extends Identifier {
 	private static final long	serialVersionUID	= 1L;
 	
 	/**
-	 * АТ "Ощадбанк" № 3323 Філія-Маньківське відділення
+	 * bank.oshchad.name
 	 */
 	@Column( length = 70 )
 	private String						name;
 	
 	/**
-	 * МФО 354507
+	 * bank.oshchad.mfo
 	 */
 	private int								mfo;
 	

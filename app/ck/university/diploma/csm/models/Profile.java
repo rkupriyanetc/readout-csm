@@ -11,53 +11,53 @@ public class Profile extends Identifier {
 	private static final long										serialVersionUID	= 1L;
 	
 	/**
-	 * Верхня назва організації ПАТ "Черкасиобленерго"
-	 * Йде в рахунок та Юр. споживачам
+	 * profile.official.name
+	 * To cheque jur. consumers
 	 */
 	@Column( length = 50 )
 	private String															topName;
 	
 	/**
-	 * Коротка назва організації Маньківський РЕМ
-	 * Йде в рахунок та Юр. споживачам
+	 * profile.home.name
+	 * To cheque jur. consumers
 	 */
 	@Column( length = 50 )
 	private String															name;
 	
 	/**
-	 * Повна назва організації Маньківський район електричних мереж
+	 * profile.home.fullName
 	 */
 	@Column( length = 200 )
 	private String															fullName;
 	
 	/**
-	 * Розрахунковий рахунок 26035860199956
-	 * Йде в рахунок та Юр. споживачам
+	 * profile.home.account
+	 * To cheque individual and jur. consumers
 	 */
 	@Column( length = 15 )
 	private String															account;
 	
 	/**
-	 * ЄДРПОУ 25204695
-	 * Йде в рахунок та Юр. споживачам
+	 * profile.home.edrpou
+	 * To cheque individual and jur. consumers
 	 */
 	private int																	edrpou;
 	
 	/**
-	 * Індивідуальний податковий № 228007323019
-	 * Йде в рахунок Юр. споживачам
+	 * profile.home.taxNumber
+	 * To cheque jur. consumers
 	 */
 	@Column( length = 15 )
 	private String															taxNumber;
 	
 	/**
-	 * № свідоцтва 200007943 ( 32121400 )
-	 * Йде в рахунок Юр. споживачам
+	 * profile.home.certificateNumber
+	 * To cheque jur. consumers
 	 */
 	private int																	certificateNumber;
 	
 	/**
-	 * Філія № 14
+	 * profile.home.branchId: 14
 	 */
 	private byte																branchId;
 	

@@ -37,7 +37,7 @@ public class MyDeadboltHandler extends AbstractDeadboltHandler {
 	}
 	
 	@Override
-	public Subject getSubject( final Http.Context context ) {
+	public F.Promise<Subject> getSubject( final Http.Context context ) {
 		final AuthUserIdentity u = PlayAuthenticate.getUser( context );
 		// Caching might be a good idea here
 		return User.findByAuthUserIdentity( u );

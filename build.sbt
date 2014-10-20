@@ -7,9 +7,9 @@ scalaVersion := "2.11.1"
 version := "1.0-SNAPSHOT"
 
 val appDependencies = Seq(
-  "be.objectify"  %% "deadbolt-java"        % "2.3.1",
+  "be.objectify"  %% "deadbolt-java"        % "2.3.2",
   "com.feth"      %% "play-authenticate"    % "0.6.5-SNAPSHOT",
-  "mysql"         %  "mysql-connector-java" % "5.1.31",
+  "mysql"         %  "mysql-connector-java" % "5.1.33",
   javaCore,
   cache,
   javaWs,
